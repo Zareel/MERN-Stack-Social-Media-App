@@ -5,6 +5,6 @@ const router = express.Router();
 
 //localhost:5000/api/v1/post/upload
 router.get("/", getPosts);
-router.post("/upload", createPost);
+router.post("post/upload", createPost);
 
 export default router;

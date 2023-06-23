@@ -1,7 +1,7 @@
 import express from "express";
-import mongoose from "mongoose";
-import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
 import cors from "cors";
+import morgan from "morgan";
 
 //importing routes
 import postRoute from "./routes/postRoute.js";
@@ -13,9 +13,13 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.use(cookieParser());
+
+// morgan logger (it prints information about our api request and response in console)
+app.use(morgan("dev"));
 
 //routes
-app.use("/api/v1/post", postRoute);
+app.use("/api/v1/auth", postRoute);
 app.use("/api/v1/auth", authRoute);
 
 // starting a server

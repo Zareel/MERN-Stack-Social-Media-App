@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const postSchema = mongoose.Schema(
+const postSchema = new mongoose.Schema(
   {
     caption: String,
     image: {
@@ -12,7 +12,7 @@ const postSchema = mongoose.Schema(
       url: String,
     },
     owner: {
-      type: mongoose.Schema.Type.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
     likes: [
@@ -25,7 +25,7 @@ const postSchema = mongoose.Schema(
     ],
     comments: [
       {
-        user: {
+        userId: {
           type: mongoose.Schema.Types.ObjectId,
           ref: "User",
         },
@@ -39,4 +39,4 @@ const postSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Post", postSchema);
+export default mongoose.model("Post", postSchema);

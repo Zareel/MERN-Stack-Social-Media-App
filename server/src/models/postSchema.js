@@ -7,10 +7,7 @@ const postSchema = new mongoose.Schema(
       public_id: String,
       url: String,
     },
-    image: {
-      public_id: String,
-      url: String,
-    },
+
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

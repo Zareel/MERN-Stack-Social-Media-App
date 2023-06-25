@@ -9,6 +9,7 @@ export const cookieOptions = {
  * @Register
  * @route http://localhost:5000/api/v1/auth/register
  * @description User signUp Controller for creating new user
+ * @parameters name, email, password
  * @returns User Object
  ******************************************************/
 

@@ -19,7 +19,7 @@ app.use(cookieParser());
 app.use(morgan("dev"));
 
 //routes
-app.use("/api/v1/auth", postRoute);
+app.use("/api/v1", postRoute);
 app.use("/api/v1/auth", authRoute);
 
 // starting a server

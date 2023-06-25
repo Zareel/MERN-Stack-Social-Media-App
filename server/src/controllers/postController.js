@@ -46,6 +46,38 @@ export const createPost = async (req, res) => {
   }
 };
 
+/**
+ * @DELETE_Post
+ * @route http://localhost:5000/api//:collectionId
+ * @description Controller for deleting the collection
+ * @description Only admin can delete the collection
+ */
+
+export const deletePost = async (req, res) => {
+  try {
+    const { id: postId } = req.params;
+    const postToDelete = await Post.findById(postId);
+
+    if (!postToDelete) {
+      return res.status(404).json({
+        success: false,
+        message: "Post Not Found",
+      });
+    }
+
+    postToDelete.remove();
+    res.status(200).json({
+      success: true,
+      message: "Post has been deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 export const likeAndUnlike = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
